@@ -1,18 +1,17 @@
+// Import jQuery
 import $ from 'jquery';
 
-// Function to add paragraphs
-function addParagraphs() {
-  const body = $('body');
-  const paragraphs = [
-    'Holberton Dashboard',
-    'Dashboard data for the students',
-    'Copyright - Holberton School',
-  ];
+// Wait for the document to be ready
+$(document).ready(function() {
+  // Create the first paragraph element
+  const paragraph1 = $('<p>').text('Holberton Dashboard');
 
-  paragraphs.forEach((text) => {
-    body.append(`<p>${text}</p>`);
-  });
-}
+  // Create the second paragraph element
+  const paragraph2 = $('<p>').text('Dashboard data for the students');
 
-// Call the function to add paragraphs
-addParagraphs();
+  // Create the third paragraph element
+  const paragraph3 = $('<p>').text('Copyright - Holberton School');
+
+  // Append the paragraphs to the body of the page
+  $('body').append(paragraph1, paragraph2, paragraph3);
+});
