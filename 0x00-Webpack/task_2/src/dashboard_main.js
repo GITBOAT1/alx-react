@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import debounce from 'lodash/debounce';
 import image from './assets/holberton-logo.jpg'
-import './css/main.css'
+import '../css/main.css'
 
 const paragraph1 = $('<p>').text('Holberton Dashboard');
 const paragraph2 = $('<p>').text('Dashboard data for the students');
