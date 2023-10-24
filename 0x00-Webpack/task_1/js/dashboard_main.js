@@ -1,6 +1,5 @@
 // Import jQuery
 import $ from 'jquery';
-// Import Lodash (specifically the `debounce` function)
 import debounce from 'lodash/debounce';
 
 $(document).ready(function() {
