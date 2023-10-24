@@ -25,6 +25,6 @@ $(document).ready(function() {
     // Add elements to the body (as previously described)
   
     // Bind the `updateCounter` function to the button's click event with a debounce delay of 300 milliseconds
-    $('#startButton').on('click', debounce(updateCounter, 300));
+    $('#startButton').on('click', debounce(updateCounter, 500));
   });
   
