@@ -4,7 +4,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js', // Your entry point in src folder
+  entry: {
+    main: path.resolve(__dirname, '../src/index.js'), // Your entry point in src folder
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../dist'),
