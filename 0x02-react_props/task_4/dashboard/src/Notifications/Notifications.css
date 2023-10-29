@@ -1,0 +1,23 @@
+.Notifications {
+  border-style: dotted dashed;
+  border-color: #f60808;
+  padding: 10px;
+}
+
+.Notifications ul li.default {
+  color: blue;
+}
+
+.Notifications ul li.urgent {
+  color: red;
+}
+
+.close {
+  width: 6px;
+  height: 4px;
+  background: url(close-icon.png) 0 0;
+}
+
+.ph {
+  text-emphasis-color: rgb(47, 13, 13);
+}
