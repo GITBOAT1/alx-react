@@ -1,0 +1,51 @@
+.Notifications { 
+  font-size: 10px;
+  border-style: dotted dashed;
+  padding: 5px;
+  border-color: #f60808;
+}
+.div1{
+    position: fixed;
+  top: 15%;
+  right: 1%;
+  transform: translateY(-40%);
+  font-family: "Times New Roman", Times, serif;
+}
+.Notifications ul li.default {
+  color: blue;
+}
+
+.Notifications ul li.urgent {
+  color: red;
+}
+
+.close {
+
+  width: 25px;
+  height: 10px;
+  cursor: pointer;
+  background: url(close-icon.png) 0 0;
+}
+
+.ph {
+  text-emphasis-color: rgb(47, 13, 13);
+}
+.div-notification {
+
+  color: white;
+
+}
+.menuItem{
+text-align: right;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: red;
+}
