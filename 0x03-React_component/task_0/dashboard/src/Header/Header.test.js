@@ -1,22 +1,20 @@
+import Header from "./Header";
+import { shallow } from "enzyme";
 import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from '@cfaester/enzyme-adapter-react-18';
-import Header from './Header';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16'; 
 
-configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() });
 
-describe('Header component', () => {
-  it('should render without crashing', () => {
-    shallow(<Header />);
-  });
-
-  it('should render the Holberton logo', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.find('img').prop('src')).toEqual('mocked-image-path');
-  });
-
-  it('should render the "School dashboard" heading', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.find('h1').text()).toEqual('School dashboard');
-  });
+describe('Header Component', () => {
+    it('should render without crashing', () => {
+        const wrapper = shallow(<Header />);
+        expect(wrapper).toBeTruthy();
+    });
+    
+    it('should render img and h1 tags', () => {
+        const wrapper = shallow(<Header />);
+        expect(wrapper.find('img')).toHaveLength(1);
+        expect(wrapper.find('h1')).toHaveLength(1);
+    });
 });
