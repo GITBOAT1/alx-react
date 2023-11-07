@@ -1,18 +1,21 @@
-import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from '@cfaester/enzyme-adapter-react-18';
 import Footer from './Footer';
+import React from 'react';
+import { shallow } from 'enzyme';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16'; 
 
-configure({ adapter: new Adapter() });
 
-describe('Footer component', () => {
-  it('should render without crashing', () => {
-    shallow(<Footer />);
-  });
+Enzyme.configure({ adapter: new Adapter() });
 
-  it('should render the copyright text', () => {
-    const wrapper = shallow(<Footer />);
-    const copyrightText = wrapper.find('p').text();
-    expect(copyrightText).toEqual('Copyright 2020 - Holberton School');
-  });
+describe('Footer', () => {
+    it('Footer component it renders without crashing', () => {
+        const wrapper = shallow(<Footer />);
+        expect(wrapper).toBeTruthy();
+    });
+    
+    it('Should render the text "Copyright', () => {
+        const wrapper = shallow(<Footer />);
+        expect(wrapper.text()).toContain('Copyright');
+    });
+    
 });

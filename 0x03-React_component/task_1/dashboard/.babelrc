@@ -1,5 +1,4 @@
 {
-    "presets": ["@babel/preset-react", "@babel/preset-env"],
-    "plugins": ["@babel/plugin-transform-runtime"]
-  }
-  
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-proposal-logical-assignment-operators"]
+}
