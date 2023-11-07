@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
-import closeIcon from './close-icon.png';
-import { getLatestNotification } from '../utils';
+import React from 'react';
+import closeIcon from '../assets/close-icon.png';
+import { getLatestNotification } from '../utils/utils';
+import NotificationItem from '../NotificationItem/NotificationItem';
 import './Notifications.css';
-import NotificationItem from './NotificationItem';
+import PropTypes from 'prop-types';
 
-function Notifications({ displayDrawer, setNotifications }) {
-  const [showNotifications, setShowNotifications] = useState(displayDrawer);
-
+const Notifications = (props) => {
+  const { displayDrawer, listNotifications } = props;
   const handleClick = () => {
     console.log('Close button has been clicked');
-    setShowNotifications(false);
-    setNotifications(false);
   };
 
   return (
-  <><div className='div1'>
-    <div className="menuItem">Your notifications</div>
     <div className="Notifications">
-      {showNotifications && (
-        <>
+      <div className="menuItem">Your notifications</div>
+      {displayDrawer && (
+        <div>
           <button
             style={{ float: 'right' }}
             aria-label="Close"
@@ -26,36 +23,42 @@ function Notifications({ displayDrawer, setNotifications }) {
           >
             <img className="close" src={closeIcon} alt="Close" />
           </button>
-          <div>
-            <p>Here is the list of notifications</p>
-            <ul>
-              <li className="urgent">
+          <p>Here is the list of notifications</p>
+          <ul>
+            {listNotifications.length === 0 ? (
+              <NotificationItem type="default" value="No new notification for now" />
+            ) : (
+              listNotifications.map((notification) => (
                 <NotificationItem
-                  type="default"
-                  value="New course available"
-                  html={undefined} // Provide a default value for the html prop
+                  key={notification.id}
+                  type={notification.type}
+                  value={notification.value}
+                  html={notification.html}
                 />
-              </li>
-              <li className="default">
-                <NotificationItem
-                  type="urgent"
-                  value="New resume available"
-                  html={undefined} // Provide a default value for the html prop
-                  className="default" />
-              </li>
-              <li className="urgent">
-                <NotificationItem
-                  type="default"
-                  value=""
-                  html={{ __html: getLatestNotification() }} />
-              </li>
-            </ul>
-          </div>
-        </>
+              ))
+            )}
+          </ul>
+        </div>
       )}
     </div>
-    </div></>
   );
-}
+};
+
+Notifications.defaultProps = {
+  displayDrawer: false,
+  listNotifications: [],
+};
+
+Notifications.propTypes = {
+  displayDrawer: PropTypes.bool,
+  listNotifications: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    html: PropTypes.shape({
+      __html: PropTypes.string.isRequired,
+    }),
+  })),
+};
 
 export default Notifications;

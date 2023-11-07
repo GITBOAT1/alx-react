@@ -11,10 +11,12 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../dist'),
   },
+  
   devServer: {
     static: {
       directory: path.join(__dirname, '../dist'),
     },
+    open: 'index.html'
   },
   module: {
     rules: [
@@ -32,7 +34,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -44,7 +46,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    //new CleanWebpackPlugin(), // when runing, cannot access the dist dir
     new HtmlWebpackPlugin({
       title: 'hot reload',
       template: './src/index.html',

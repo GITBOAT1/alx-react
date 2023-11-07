@@ -1,15 +1,21 @@
-// CourseList.test.js
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
+import Enzyme from 'enzyme';
 import CourseList from './CourseList';
+import Adapter from 'enzyme-adapter-react-16'; 
+import CourseListRow from './CourseListRow';
 
-describe('CourseList', () => {
-  it('renders CourseList component without crashing', () => {
-    render(<CourseList />);
-  });
+Enzyme.configure({ adapter: new Adapter() });
 
-  it('renders the 5 different rows', () => {
-    const { container } = render(<CourseList />);
-    expect(container.querySelectorAll('tr').length).toBe(5);
-  });
+describe('Courselist', () => {
+    it('renders CourseList component without crashing', () => {
+        const wrapper = shallow(<CourseList />);
+        expect(wrapper).toBeTruthy();
+    });
+
+    it('should render 5 different rows', () => {
+        const wrapper = shallow(<CourseList />);
+        const rows = wrapper.find(CourseListRow);
+        expect(rows.length).toBe(3);
+    })
 });

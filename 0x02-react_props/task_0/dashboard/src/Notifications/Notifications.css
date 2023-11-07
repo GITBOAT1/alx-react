@@ -1,0 +1,22 @@
+.Notifications {
+  border-style: dotted dashed;
+  border-color: #f60808;
+  padding: 10px;
+}
+.Notifications ul li[data-priority="default"] {
+  color: blue;
+}
+
+.Notifications ul li[data-priority="urgent"] {
+  color: red;
+}
+
+.close {
+  width: 6px;
+  height: 4px;
+  background: url(../assets/close-icon.png) 0 0;
+}
+
+.ph {
+  text-emphasis-color: rgb(47, 13, 13);
+}

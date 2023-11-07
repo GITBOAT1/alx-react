@@ -1,30 +1,54 @@
-import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from '@cfaester/enzyme-adapter-react-18';
 import App from './App';
-import Header from '../Header/Header';
+import React from 'react';
+import { shallow } from 'enzyme';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import Notifications from '../Notifications/Notifications';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
+import Header from '../Header/Header';
+import CourseList from '../CourseList/CourseList';
 
-configure({ adapter: new Adapter() });
 
-describe('App component', () => {
-  it('should render without crashing', () => {
-    shallow(<App />);
+Enzyme.configure({ adapter: new Adapter() });
+
+
+describe('App', () => {
+  it('should contain the Notifications component', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.contains(<Notifications />)).toBe(false);
   });
 
   it('should contain the Header component', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find(Header)).toHaveLength(1);
+    expect(wrapper.contains(<Header />)).toBe(true);
   });
 
   it('should contain the Login component', () => {
-    const wrapper = shallow(<App isLoggedIn={false}/>);
-    expect(wrapper.find(Login)).toHaveLength(0);
+    const wrapper = shallow(<App />);
+    expect(wrapper.contains(<Login />)).toBe(false);
   });
 
   it('should contain the Footer component', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find(Footer)).toHaveLength(1);
+    expect(wrapper.contains(<Footer />)).toBe(true);
+  });
+
+  it('should render Login when isLoggedIn is false', () => {
+    const wrapper = shallow(<App isLoggedIn={false} />);
+    expect(wrapper.containsMatchingElement(<Login />)).toBe(true);
+    expect(wrapper.containsMatchingElement(<CourseList />)).toBe(false);
+  });
+
+  it('should render CourseList', () => {
+    const wrapper = shallow(<App isLoggedIn={true} />);
+    expect(wrapper.containsMatchingElement(<CourseList />)).toBe(false);
+  });
+
+  it('should not render Login', () => {
+    const wrapper = shallow(<App isLoggedIn={true} />);
+    expect(wrapper.containsMatchingElement(<Login />)).toBe(false);
   });
 });
+
+

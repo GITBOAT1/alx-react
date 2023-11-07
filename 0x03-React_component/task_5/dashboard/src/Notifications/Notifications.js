@@ -1,61 +1,77 @@
-import React, { useState } from 'react';
-import closeIcon from './close-icon.png';
-import { getLatestNotification } from '../utils';
+import React, { Component } from 'react';
+import closeIcon from '../assets/close-icon.png';
+import { getLatestNotification } from '../utils/utils';
+import NotificationItem from '../NotificationItem/NotificationItem';
 import './Notifications.css';
-import NotificationItem from './NotificationItem';
+import PropTypes from 'prop-types';
 
-function Notifications({ displayDrawer, setNotifications }) {
-  const [showNotifications, setShowNotifications] = useState(displayDrawer);
+class Notifications extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  const handleClick = () => {
-    console.log('Close button has been clicked');
-    setShowNotifications(false);
-    setNotifications(false);
+  markAsRead = (id) => {
+    console.log(`Notification ${id} has been marked as read`);
   };
 
-  return (
-  <><div className='div1'>
-    <div className="menuItem">Your notifications</div>
-    <div className="Notifications">
-      {showNotifications && (
-        <>
-          <button
-            style={{ float: 'right' }}
-            aria-label="Close"
-            onClick={handleClick}
-          >
-            <img className="close" src={closeIcon} alt="Close" />
-          </button>
+  shouldComponentUpdate(nextProps) {
+    // Compare the length of current listNotifications with next listNotifications
+    return nextProps.listNotifications.length > this.props.listNotifications.length;
+  }
+
+  render() {
+    const { displayDrawer, listNotifications } = this.props;
+
+    return (
+      <div className="Notifications">
+        <div className="menuItem">Your notifications</div>
+        {displayDrawer && (
           <div>
+            <button
+              style={{ float: 'right' }}
+              aria-label="Close"
+              onClick={this.handleClick}
+            >
+              <img className="close" src={closeIcon} alt="Close" />
+            </button>
             <p>Here is the list of notifications</p>
             <ul>
-              <li className="urgent">
-                <NotificationItem
-                  type="default"
-                  value="New course available"
-                  html={undefined} // Provide a default value for the html prop
-                />
-              </li>
-              <li className="default">
-                <NotificationItem
-                  type="urgent"
-                  value="New resume available"
-                  html={undefined} // Provide a default value for the html prop
-                  className="default" />
-              </li>
-              <li className="urgent">
-                <NotificationItem
-                  type="default"
-                  value=""
-                  html={{ __html: getLatestNotification() }} />
-              </li>
+              {listNotifications.length === 0 ? (
+                <NotificationItem type="default" value="No new notification for now" />
+              ) : (
+                listNotifications.map((notification) => (
+                  <NotificationItem
+                    key={notification.id}
+                    type={notification.type}
+                    value={notification.value}
+                    html={notification.html}
+                    markAsRead={() => this.markAsRead(notification.id)}
+                  />
+                ))
+              )}
             </ul>
           </div>
-        </>
-      )}
-    </div>
-    </div></>
-  );
+        )}
+      </div>
+    );
+  }
 }
+
+Notifications.defaultProps = {
+  displayDrawer: false,
+  listNotifications: [],
+};
+
+Notifications.propTypes = {
+  displayDrawer: PropTypes.bool,
+  listNotifications: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    html: PropTypes.shape({
+      __html: PropTypes.string.isRequired,
+    }),
+  })),
+};
 
 export default Notifications;

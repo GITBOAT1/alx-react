@@ -13,19 +13,14 @@
   }
 }
 
-.App-body {
 
-  min-height: 100vh;
-  display: flex;
-  flex-direction: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  color: rgb(15, 9, 9);
-  margin-left: 45px;
+
+
+
+
+h1{
+  color: #f41133;
 }
-
-
 
 img {
   width: 200px;
@@ -43,4 +38,10 @@ img {
   to {
     transform: rotate(360deg);
   }
+}
+
+input[type=submit] {
+  padding: 2px 2px;
+  margin-left: 20px;
+  box-sizing: border-box;
 }

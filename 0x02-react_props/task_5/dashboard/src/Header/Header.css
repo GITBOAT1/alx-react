@@ -1,10 +1,9 @@
 .App-header {
-    display: flex;
-    flex-direction: flex;
-    align-items:center;
-    justify-content: flex-start;
-    font-size: calc(2px + 2vmin);
-    color: white;
-    border-bottom: 3px solid red;
-  }
-  
+  display: flex;
+  flex-direction: row; /* or 'column' based on your design */
+  align-items: center;
+  justify-content: flex-start; /* or 'center', 'flex-end', etc. */
+  font-size: calc(2px + 2vmin);
+  color: white;
+  border-bottom: 5px solid red;
+}

@@ -1,1 +1,18 @@
-console.log("Hello, Webpack!");
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App/App';
+import Notifications from './Notifications/Notifications';
+
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <div>
+      <Notifications />
+    </div>
+    <App />
+
+  </React.StrictMode>
+);
+
