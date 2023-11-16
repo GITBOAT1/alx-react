@@ -1,0 +1,21 @@
+/* Create & export a constant named map. It should create an 
+    Immutable Map with the following object:
+*/
+
+import { Map } from 'immutable';
+
+// Create an Immutable Map with the initial values
+export const map = Map({
+  1: 'Liam',
+  2: 'Noah',
+  3: 'Elijah',
+  4: 'Oliver',
+  5: 'Jacob',
+  6: 'Lucas',
+});
+
+// Create map2 by modifying values in map
+export const map2 = map
+  .set(2, 'Benjamin') // Modify the value for the index 2 to 'Benjamin'
+  .set(4, 'Oliver');   // Mod
+  
