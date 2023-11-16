@@ -4,7 +4,7 @@
     It should return a List containing the values of the two pages
 */
 
-import { List, fromJS } from "./node_modules/immutable/dist/immutable";
+import { List, fromJS } from 'immutable';
 
 
 export function concatElements(page1, page2) {
@@ -16,3 +16,4 @@ export function mergeElements(page1, page2) {
   
     return fromJS(mergedObject);
   }
+  
