@@ -1,3 +1,4 @@
+#!/bin/node
 import {getImmutableObject} from './0-fromjs.js'
 
 const inputObject = {
