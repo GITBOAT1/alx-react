@@ -1,3 +1,6 @@
+/* In 1-map.js, modify the function getImmutableObject
+     using Map from Immutable.js
+ */
 export default function accessImmutableObject(object, array) {
     let result = object;
   
@@ -12,4 +15,3 @@ export default function accessImmutableObject(object, array) {
   
     return result;
   }
-  
