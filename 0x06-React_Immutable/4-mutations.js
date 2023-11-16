@@ -1,8 +1,8 @@
+import { Map } from 'immutable';
+
 /* Create & export a constant named map. It should create an 
     Immutable Map with the following object:
 */
-
-import { Map } from 'immutable';
 
 // Create an Immutable Map with the initial values
 export const map = Map({
@@ -16,6 +16,5 @@ export const map = Map({
 
 // Create map2 by modifying values in map
 export const map2 = map
-  .set(2, 'Benjamin') // Modify the value for the index 2 to 'Benjamin'
-  .set(4, 'Oliver');   // Mod
-  
+  .set(2, 'Benjamin') 
+  .set(4, 'Oliver'); 
