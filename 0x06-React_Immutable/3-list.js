@@ -13,6 +13,6 @@ export function getListObject(array) {
 }
 
 export function addElementToList(list, element) {
-    const mylis = List(list).insert(length(list), element);
+    const mylis = List(list).push(element);
     return mylis
 }
