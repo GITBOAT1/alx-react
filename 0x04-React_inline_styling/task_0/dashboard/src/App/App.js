@@ -7,7 +7,6 @@ import CourseList from '../CourseList/CourseList';
 import PropTypes from 'prop-types';
 import { getLatestNotification } from '../utils/utils';
 import '../index.js';
-// Import the newly created components
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection.js';
 import { StyleSheet, css } from 'aphrodite';
@@ -26,7 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#deb5b545',
     textAlign: 'center',
     width: '100%',
-    position: 'fixed',
     bottom: 0,
     padding: '10px 0',
   },

@@ -6,14 +6,14 @@ const styles = StyleSheet.create({
   header: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#E0354B',
-    color: 'white',
+    justifyContent: 'flex-start',
+    borderBottom: '5px solid red',
+    color: 'red',
     padding: '0.5rem 1rem',
   },
   logo: {
-    width: '150px',
-    height: '50px',
+    width: '200px',
+    height: '200px',
     marginRight: '10px',
   },
 });

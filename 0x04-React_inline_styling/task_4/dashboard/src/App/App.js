@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#deb5b545',
     textAlign: 'center',
     width: '100%',
-    position: 'fixed',
-    bottom: 0,
+     bottom: 0,
     padding: '10px 0',
   },
 });
@@ -70,9 +69,9 @@ class App extends React.Component {
     ];
 
     return (
-      <div className={css(styles.body)}>
+      <div className={css(styles.body)}z>
         <div>
-          <Notifications displayDrawer={true} listNotifications={listNotifications} />
+          <Notifications displayDrawer={false} listNotifications={listNotifications} />
         </div>
         <Header />
 

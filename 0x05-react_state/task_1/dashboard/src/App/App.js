@@ -40,9 +40,12 @@ const App = () => {
 
 const AppContent = () => {
   // Access the context values using the useAppContext hook
-  const { isLoggedIn, logOut } = useAppContext();
-
+  const { isLoggedIn, user, logOut, updateUser, updateLogOut} = useAppContext();
   const [displayDrawer, setDisplayDrawer] = React.useState(true);
+
+  const logIn = (email, password) => {
+    updateUser({ email, password, isLoggedIn: true });
+  };
 
   const handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === 'h') {
@@ -82,23 +85,22 @@ const AppContent = () => {
   return (
     <div className={css(styles.body)}>
       <div>
-        {/* Pass the state and functions to Notifications component */}
-        <Notifications
-          displayDrawer={displayDrawer}
-          listNotifications={listNotifications}
-          handleDisplayDrawer={handleDisplayDrawer}
-          handleHideDrawer={handleHideDrawer}
+         <Notifications
+          displayDrawer={user.displayDrawer} // Update to use user object from state
+          listNotifications={user.listNotifications} // Update to use user object from state
+          handleDisplayDrawer={updateUser} // Update to use updateUser function
+          handleHideDrawer={updateUser} // Update to use updateUser function
         />
       </div>
       <Header />
 
-      {isLoggedIn ? (
+      {user.isLoggedIn ? (
         <BodySectionWithMarginBottom title="Course list">
-          <CourseList listCourses={listCourses} />
+          <CourseList listCourses={user.listCourses} /> {/* Update to use user object from state */}
         </BodySectionWithMarginBottom>
       ) : (
         <BodySectionWithMarginBottom title="Log in to continue">
-          <Login />
+          <Login logIn={logIn} /> {/* Pass the logIn function to the Login component */}
         </BodySectionWithMarginBottom>
       )}
 

@@ -34,12 +34,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      displayDrawer: true,
+      displayDrawer: false, // Set the default state to false
     };
-
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -47,26 +43,24 @@ class App extends React.Component {
       console.log('Notifications component updated. Display Drawer State:', this.props.displayDrawer);
     }
   }
-  
-  
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleKeyDown(event) {
+  handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === 'h') {
       alert('Logging you out');
       this.props.logOut();
     }
-  }
+  };
 
   handleDisplayDrawer = () => {
     this.setState((prevState) => ({ displayDrawer: !prevState.displayDrawer }));
   };
-  
+
   handleHideDrawer = () => {
-    this.setState((prevState) => ({ displayDrawer: !prevState.displayDrawer }));
+    this.setState({ displayDrawer: false });
   };
 
   render() {
@@ -85,7 +79,7 @@ class App extends React.Component {
     ];
 
     return (
-<div className={css(styles.body)}>
+      <div className={css(styles.body)}>
         <div>
           {/* Pass the state and functions to Notifications component */}
           <Notifications
@@ -94,7 +88,6 @@ class App extends React.Component {
             handleDisplayDrawer={this.handleDisplayDrawer}
             handleHideDrawer={this.handleHideDrawer}
           />
-
         </div>
         <Header />
 

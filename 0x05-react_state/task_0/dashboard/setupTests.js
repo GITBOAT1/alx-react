@@ -1,6 +1,12 @@
 import { JSDOM } from 'jsdom';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+// setupTests.js
+import { StyleSheetTestUtils } from 'aphrodite';
+
+// Mock Aphrodite styles
+StyleSheetTestUtils.suppressStyleInjection();
+
 Enzyme.configure({ adapter: new Adapter() });
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');

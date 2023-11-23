@@ -34,7 +34,7 @@ describe('App', () => {
 
   it('should contain the Login component', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.contains(<Login />)).toBe(false);
+    expect(wrapper.contains(<Login />)).toBe(true);
   });
 
   it('should contain the Footer component', () => {
