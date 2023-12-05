@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2"
+  },
+  "devDependencies": {
+    "redux-mock-store": "^1.5.4"
+  }
+}
